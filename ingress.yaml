@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     ingressClassName: nginx
-  name: e2e-project--ingress
+  name: e2e-project-ingress
   namespace: guestbook
 spec:
   ingressClassName: nginx
