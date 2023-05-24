@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    ingressClassName: nginx
+  name: e2e-project--ingress
+  namespace: guestbook
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "guestbook.absi.test"
+    http:
+      paths:
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: e2e-project-deployment-svc
+              port:
+                number: 80

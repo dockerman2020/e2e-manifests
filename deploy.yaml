@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: e2e-project-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: e2e-app
+  template:
+    metadata:
+      labels:
+        app: e2e-app
+    spec:
+      containers:
+        - name: e2e-app
+          image: dockerman2002/e2e-pipeline:1.0.0-120
+          resources:
+            limits:
+              memory: "256M"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
