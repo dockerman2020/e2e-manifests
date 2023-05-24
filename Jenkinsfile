@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label "jenkins-agent"
+        label "macos"
     }
     environment {
         APP_NAME = "e2e-pipeline"
