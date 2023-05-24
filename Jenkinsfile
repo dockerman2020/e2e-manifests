@@ -35,6 +35,7 @@ pipeline {
         stage("Push the changed deploy file to Git") {
             steps {
                 sh """
+                    cat deploy.yaml
                     git config --global user.name "dockerman2020"
                     git config --global user.email "75863443+dockerman2020@users.noreply.github.com"
                     git add deploy.yaml
