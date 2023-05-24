@@ -27,9 +27,7 @@ pipeline {
                 sh """
                     cat deploy.yaml
                     sed 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' deploy.yaml >deploy-1.yaml
-                    echo First-cat-of-deploy.
-                    cat deploy.yaml
-                    cat deploy-1.yaml
+                    mv deploy-1.yaml deploy.yaml
                 """
             }
         }
