@@ -39,6 +39,7 @@ pipeline {
                 withCredentials([gitUsernamePassword(credentialsId: 'e2e-pat', gitToolName: 'Default')]) {
                     sh "git push https://github.com/dockerman2020/e2e-manifests main"
                 }
+                sh 'rm deploy.yaml'
             }
         }
 
