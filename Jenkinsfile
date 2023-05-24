@@ -40,7 +40,9 @@ pipeline {
                     git add deploy.yaml
                     git commit -m "Updated Deployment Manifest"
                 """
-                withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
+                // withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
+                withCredentials([gitUsernamePassword(credentialsId: 'jenkins-github', gitToolName: 'Default')]) {
+
                     sh "git push https://github.com/dockerman2020/e2e-manifests main"
                 }
             }
