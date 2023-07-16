@@ -1,7 +1,33 @@
 pipeline {
+    // agent {
+    //     label "macos"
+    // }
     agent {
-        label "macos"
-    }
+        kubernetes {
+            cloud 'kubernetes'
+            idleMinutes 5
+            namespace 'jenkins-worker'
+            yaml '''
+                apiVersion: v1
+                kind: Pod
+                spec:
+                    containers:
+                    - name: e2e-docker
+                      image: dockerman2002/e2e-jq:v1.0.2
+                      command:
+                      - cat
+                      tty: true
+                      volumeMounts:
+                      - name: docker-socket
+                        mountPath: /var/run/docker.sock
+                    volumes:
+                    - name: docker-socket
+                      hostPath:
+                        path: /var/run/docker.sock
+                        type: Socket
+            '''
+        }
+	}
     environment {
         APP_NAME = "e2e-pipeline"
     }
