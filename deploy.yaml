@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: e2e-app
-          image: dockerman2002/e2e-pipeline:1.0.0-50
+          image: dockerman2002/e2e-pipeline:1.0.0-1
           resources:
             limits:
               memory: "256M"
